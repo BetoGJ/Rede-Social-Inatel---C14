@@ -5,6 +5,7 @@ import java.io.*;
 public class ClienteSocket {
     private Socket socket;
     private BufferedReader leitor;
+    private PrintWriter escritor ;
 
     public ClienteSocket(Socket socket) throws IOException {
         if (socket == null)
