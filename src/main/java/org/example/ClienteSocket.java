@@ -2,26 +2,29 @@ package org.example;
 import java.net.Socket;
 import java.io.*;
 
-public class ClienteSocket
-{
+public class ClienteSocket {
     private Socket socket;
     private BufferedReader leitor;
 
-    public  ClienteSocket  (Socket socket) throws IOException {
-         if (socket==null)
-             throw new IllegalArgumentException("O socket não pode ser nulo.");
-         if (socket.isClosed())
-             throw new IOException("O socket injetado ja esta fechado.");
-         if (!socket.isConnected())
-             throw new IOException("O socket injetado nao esta conectado.");
+    public ClienteSocket(Socket socket) throws IOException {
+        if (socket == null)
+            throw new IllegalArgumentException("O socket não pode ser nulo.");
+        if (socket.isClosed())
+            throw new IOException("O socket injetado ja esta fechado.");
+        if (!socket.isConnected())
+            throw new IOException("O socket injetado nao esta conectado.");
 
-         this.socket = socket;
-         leitor = new BufferedReader(new InputStreamReader(socket.getInputStream()) );
+        this.socket = socket;
+        leitor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        escritor = new PrintWriter(socket.getOutputStream(), true);
     }
 
-    public String ReceberMensagem() throws IOException
-    {
+    public String ReceberMensagem() throws IOException {
         return leitor.readLine();
     }
 
+    public Void EnviarMensagem(String mennsagemEnviada) throws IOException {
+        escritor.println(mennsagemEnviada);
+        return null;
+    }
 }
