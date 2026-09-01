@@ -25,4 +25,14 @@ public class TestClienteSocket {
         });
     }
 
+    @Test
+    public void testsocketconected ()
+    {
+        MockSocket socket = new MockSocket();
+        socket.fechado = false ;
+        assertThrows(IOException.class,() ->{
+            ClienteSocket clienteSocket = new ClienteSocket(socket);
+        });
+    }
+
 }
