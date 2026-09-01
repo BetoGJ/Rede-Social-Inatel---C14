@@ -1,6 +1,6 @@
 package org.example;
 import java.io.IOException;
-
+import java.util.Scanner;
 
 public class Cliente implements Runnable {
 
@@ -30,7 +30,14 @@ public class Cliente implements Runnable {
         }
     }
 
+    public void enviarMensagem() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("Escreva uma mensagem");
+            mensagemEnviada = sc.nextLine();
+            this.clienteSocket.EnviarMensagem(mensagemEnviada);
+        } while (!mensagemEnviada.equals("saida"));
+    }
 
 
 }
-
