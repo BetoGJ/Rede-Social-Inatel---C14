@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
 
 
 public class TestCliente
@@ -25,4 +26,16 @@ public class TestCliente
             Cliente cliente = new Cliente(null);
         });
     }
+
+    @Test
+    public  void testLoopReceberMensagem() throws IOException
+    {
+        Cliente cliente = new Cliente(clienteSocket);
+
+       when(clienteSocket.ReceberMensagem()).thenReturn(null);
+       cliente.receberMensagem();
+
+       verify(clienteSocket, times(1)).ReceberMensagem();
+    }
+
 }
