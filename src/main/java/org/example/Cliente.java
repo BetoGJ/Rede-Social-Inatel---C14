@@ -10,6 +10,8 @@ public class Cliente implements Runnable {
 
     public Cliente(ClienteSocket clienteSocket)
     {
+        if (clienteSocket == null)
+            throw new IllegalArgumentException("O Clientesocket não pode ser nulo.");
         this.clienteSocket = clienteSocket;
     }
 
