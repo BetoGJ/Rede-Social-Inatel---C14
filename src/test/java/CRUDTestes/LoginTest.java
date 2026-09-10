@@ -10,8 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.Mock;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class LoginTest {
@@ -49,5 +48,19 @@ public class LoginTest {
 
         assertFalse(autenticado);
         assertFalse(usuario.getLogado());
+    }
+
+    @Test
+    public void testeVerificarEmail(){
+        String emailTeste = Login.verificarEmail(email);
+
+        assertEquals(email, emailTeste);
+    }
+
+    @Test
+    public void testeVerificarEmailInvalido(){
+        String emailTeste = Login.verificarEmail("@inatel.br");
+
+        assertEquals("Email inválido", emailTeste);
     }
 }
