@@ -8,15 +8,22 @@ import java.net.Socket;
 import java.util.IllegalFormatWidthException;
 
 public class Servidor {
-    public Servidor(){
-        try (ServerSocket socketServidor = new ServerSocket(8089);
+    private int porta;
+    public Servidor(int porta){
+        if(porta<1 || porta>65535) throw new IllegalArgumentException();
+        this.porta = porta;
+    }
+    public void ativarServidor() {
+        try (ServerSocket socketServidor = new ServerSocket(this.porta);
              Socket conexao = socketServidor.accept();
         ) {
+
             DataInputStream entrada = new DataInputStream(conexao.getInputStream());
             DataOutputStream saida = new DataOutputStream(conexao.getOutputStream());
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        };
+        }
+        ;
     }
+
 }
