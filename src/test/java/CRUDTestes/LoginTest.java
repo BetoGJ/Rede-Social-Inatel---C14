@@ -63,4 +63,18 @@ public class LoginTest {
 
         assertEquals("Email inválido", emailTeste);
     }
+
+    @Test
+    public void testeVerificarSenha(){
+        String senhaTeste = Login.verificarSenha(senha);
+
+        assertEquals(senha, senhaTeste);
+    }
+
+    @Test
+    public void testeVerificarSenhaInvalida(){
+        String senhaTeste = Login.verificarSenha("1234");
+
+        assertEquals("Senha inválida", senhaTeste);
+    }
 }
