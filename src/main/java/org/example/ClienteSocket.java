@@ -24,8 +24,8 @@ public class ClienteSocket {
         return leitor.readLine();
     }
 
-    public Void EnviarMensagem(String mennsagemEnviada) throws IOException {
-        escritor.println(mennsagemEnviada);
+    public Void EnviarMensagem(String mensagemEnviada) throws IOException {
+        escritor.println(mensagemEnviada);
         return null;
     }
 }
